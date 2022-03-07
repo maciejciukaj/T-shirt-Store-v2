@@ -8,10 +8,10 @@
     </head>
     <body>
         <?php
-        include_once('klasy/RegistrationForm.php');
-        include 'klasy/User.php';
+        include_once('classes/RegistrationForm.php');
+        include 'classes/User.php';
 
-        include_once 'klasy/Baza.php';
+        include_once 'classes/Baza.php';
 
         $bd = new Baza("localhost", "root", "", "klienci");
         $rf = new RegistrationForm();
