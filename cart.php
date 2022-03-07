@@ -1,7 +1,7 @@
 <?php 
-include_once 'klasy/Baza.php';
-    include_once 'klasy/User.php';
-    include_once 'klasy/UserManager.php';
+include_once 'classes/Baza.php';
+    include_once 'classes/User.php';
+    include_once 'classes/UserManager.php';
          session_start();
 ?>
 
@@ -93,7 +93,7 @@ include_once 'klasy/Baza.php';
           </form>
           <?php
 
-function testfun()
+function checkIfLogged()
 {
     
      $db = new Baza("localhost", "root", "", "klienci");
@@ -114,7 +114,7 @@ function testfun()
 }
 
 if(array_key_exists('placeOrder',$_POST)){
-   testfun();
+    checkIfLogged();
 }
 
 ?>

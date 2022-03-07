@@ -101,18 +101,18 @@ class UserManager {
         $args = [
         'login' => FILTER_SANITIZE_ADD_SLASHES,
         'passwd' => FILTER_SANITIZE_ADD_SLASHES];
-        //przefiltruj dane z GET (lub z POST) zgodnie z ustawionymi w $args filtrami:
+       
         $dane = filter_input_array(INPUT_POST, $args);
-        //sprawdź czy użytkownik o loginie istnieje w tabeli users
-        //i czy podane hasło jest poprawne
+       
+        
         $login = $dane["login"];
         $passwd = $dane["passwd"];
         $userId = $db->selectUser($login, $passwd, "users");
-        if ($userId >= 0) { //Poprawne dane  
+        if ($userId >= 0) { 
               
-            session_start();    //rozpocznij sesję zalogowanego użytkownika
+            session_start();  
             $db->delete("DELETE FROM logged_in_users WHERE userId = $userId");//usuń wszystkie wpisy historyczne dla użytkownika o $userId
-            $values = "'".session_id()."','".$userId."','".(new DateTime('now'))->format("Y-m-d H:i:s")."'"; //ustaw datę - format("Y-m-d H:i:s");
+            $values = "'".session_id()."','".$userId."','".(new DateTime('now'))->format("Y-m-d H:i:s")."'"; 
             $db->insert("INSERT INTO logged_in_users(sessionId, userId, lastUpdate) VALUES ($values)"); //pobierz id sesji i dodaj wpis do tabeli logged_in_users    
         }
 
@@ -121,8 +121,8 @@ class UserManager {
     function logout($db) {
        
         session_start();
-        $id = session_id(); //pobierz id bieżącej sesji (pamiętaj o session_start()
-        $db->delete("DELETE FROM logged_in_users WHERE sessionId = '".$id."'"); //usuń wpis z id bieżącej sesji z tabeli logged_in_users
+        $id = session_id(); 
+        $db->delete("DELETE FROM logged_in_users WHERE sessionId = '".$id."'");
         
         if( isset($_SERVER['HTTP_COOKIE']) ){
             $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
@@ -134,7 +134,7 @@ class UserManager {
             }
         }
         
-        session_destroy();//usuń sesję (łącznie z ciasteczkiem sesyjnym)
+        session_destroy();
     }
 
     function getLoggedInUser($db, $sessionId) {
@@ -143,9 +143,9 @@ class UserManager {
         $userId = $db->query("SELECT userId FROM logged_in_users WHERE sessionId=$id");
         
         if($userId>0){
-            return $userId;//wynik $userId - znaleziono wpis z id sesji w tabeli logged_in_users
+            return $userId;
         }else{
-            return -1;  //wynik -1 - nie ma wpisu dla tego id sesji w tabeli logged_in_users
+            return -1;  //wynik -1 czyli nie ma wpisu dla tego id sesji w tabeli logged_in_users
         }
     }
 }

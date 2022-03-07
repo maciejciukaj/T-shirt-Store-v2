@@ -1,7 +1,7 @@
 <?php
-    include_once 'klasy/Baza.php';
-    include_once 'klasy/User.php';
-    include_once 'klasy/UserManager.php';
+    include_once 'classes/Baza.php';
+    include_once 'classes/User.php';
+    include_once 'classes/UserManager.php';
     $db = new Baza("localhost", "root", "", "klienci");
     $um = new UserManager();
     
@@ -9,9 +9,9 @@
         $um->logout($db);
        
     }
-    //kliknięto przycisk submit z name = zaloguj
+    
     if (filter_input(INPUT_POST, "zaloguj")) {
-        $userId = $um->login($db); //sprawdź parametry logowania
+        $userId = $um->login($db);
         if ($userId > 0) {        
             ?><script>confirm("Logged in!"); window.location.href="index.php";</script><?php
 

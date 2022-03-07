@@ -1,8 +1,7 @@
 <?php 
-//include_once ('login.php');
-include_once 'klasy/Baza.php';
-    include_once 'klasy/User.php';
-    include_once 'klasy/UserManager.php';
+include_once 'classes/Baza.php';
+    include_once 'classes/User.php';
+    include_once 'classes/UserManager.php';
          session_start();
     
     $db = new Baza("localhost", "root", "", "klienci");

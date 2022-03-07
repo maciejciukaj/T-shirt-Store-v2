@@ -119,7 +119,7 @@ class RegistrationForm {
         }
 
         if ($errors === "") {
-            //Dane poprawne – utwórz obiekt user
+          
             $this->user = new User($dane['userName'], $dane['fullName'], $dane['email'], $dane['passwd']);
         }   else {
            // echo "<p>Bledne dane: $errors</p>";
