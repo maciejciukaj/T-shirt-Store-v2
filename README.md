@@ -8,9 +8,9 @@ T-shirt store website created using HTML, CSS, Javascript, PHP and Bootstrap, mu
 <li>The order form has a mechanism that checks the entered data and selected checkbox.</li>
 <li><i>About</i> site contains small gallery that was created using lightbox.</li>
 <li><i>Contact</i> site contains interactive Google Map and simple form with data validation created in JS.</li>
-<li>You can register and login to your account (data stored in MySQL database)</li>
-<li>If you have admin status you are able to check 'Admin Panel'. There you can check registered users and delete one of them if necessary</li>
-<li>Database controlled through Xampp's PhpMyAdmin</li>
+<li>You can register and login to your account (data stored in MySQL database).</li>
+<li>If you have admin status you are able to check 'Admin Panel'. There you can check registered users and delete one of them if necessary.</li>
+<li>Database controlled through Xampp's PhpMyAdmin.</li>
 </ul>
 <hr>
 
